@@ -1,11 +1,12 @@
 # base image
-FROM alpine:3.7
+FROM python:3.11-slim
 
 # Install python 3 and pip
 RUN apk add --update python3
 
 # Install Python modules needed by the Python app
 COPY requirements.txt /usr/src/app/
+RUN python3 -m pip install --upgrade pip
 RUN pip3 install --no-cache-dir -r /usr/src/app/requirements.txt
 
 # Copy files required for the app to run
