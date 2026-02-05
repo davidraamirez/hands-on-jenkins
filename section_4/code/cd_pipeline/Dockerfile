@@ -1,19 +1,17 @@
-# Use a modern Python image with pip included
 FROM python:3.11-slim
 
-# Set working directory
 WORKDIR /usr/src/app
 
-# Copy requirements first and install dependencies
-COPY requirements.txt .
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
-COPY app.py .
+COPY app.py ./
 COPY templates/ templates/
 
-# Expose port
+# Crear la carpeta de GIFs vacía (los GIFs se descargan al iniciar)
+RUN mkdir -p static/gifs
+COPY static/ static/
+
 EXPOSE 5000
 
-# Run the application
 CMD ["python", "app.py"]
