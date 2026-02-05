@@ -7,9 +7,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app.py ./
 COPY templates/ templates/
-
-# Crear la carpeta de GIFs vacía (los GIFs se descargan al iniciar)
-RUN mkdir -p static/gifs
+# Copiar los GIFs locales al contenedor
+COPY static/ static/
 
 EXPOSE 5000
 
