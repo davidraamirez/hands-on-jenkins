@@ -10,7 +10,6 @@ COPY templates/ templates/
 
 # Crear la carpeta de GIFs vacía (los GIFs se descargan al iniciar)
 RUN mkdir -p static/gifs
-COPY static/ static/
 
 EXPOSE 5000
 
